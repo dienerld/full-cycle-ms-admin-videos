@@ -1,0 +1,20 @@
+name: full-cycle-microservice-1
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: full-cycle-microservice-1
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/home/node/app
+      - $PNPM_HOME:/pnpm
+    networks:
+      - full-cycle
+
+
+networks:
+  full-cycle:
+    external: true
