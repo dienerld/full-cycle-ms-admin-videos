@@ -1,16 +1,22 @@
 {
-  "name": "pratico-1-nestJS",
+  "name": "ms-videos-admin",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest",
+    "test:run": "yarn test run --config ./vitest.config.ts --fileParallelism false",
+    "test:cov": "yarn test run --config ./vitest.config.ts --coverage --fileParallelism false",
+    "test:unit": "yarn test --config ./vitest-unit.config.ts",
+    "test:e2e": "yarn test --config ./vitest-e2e.config.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@eslint/js": "^9.9.1",
+    "@types/lodash": "^4.17.7",
     "@types/node": "^22.5.2",
     "eslint": "^9.9.1",
     "globals": "^15.9.0",
@@ -20,5 +26,11 @@
     "typescript-eslint": "^8.4.0",
     "vite-tsconfig-paths": "^5.0.1",
     "vitest": "^2.0.5"
+  },
+  "dependencies": {
+    "class-transform": "^0.7.0",
+    "class-validator": "^0.14.1",
+    "lodash": "^4.17.21",
+    "ulid": "^2.3.0"
   }
 }

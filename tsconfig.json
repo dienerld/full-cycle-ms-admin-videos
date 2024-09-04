@@ -35,12 +35,9 @@
       "@modules/*": [
         "src/modules/*"
       ],
-      "@common/*": [
-        "src/common/*"
-      ],
-      "@config/*": [
-        "src/config/*"
-      ],
+      "@shared/*": [
+        "src/shared/*"
+      ]
     },
     "types": [
       "vitest/globals"

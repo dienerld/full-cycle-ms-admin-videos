@@ -3,7 +3,8 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 
 export const commonConfig: UserConfig = {
   plugins: [
-    tsconfigPaths(),  ],
+    tsconfigPaths(),
+  ],
   test: {
     globals: true,
     include: ['src/**/*.{spec,test,e2e}.ts'],
