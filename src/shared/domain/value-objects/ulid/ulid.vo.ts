@@ -1,4 +1,4 @@
-import { ValueObject } from "../../value-object/value-object";
+import { ValueObject } from "../value-object";
 import { ulid } from "ulid";
 
 export class Ulid extends ValueObject {

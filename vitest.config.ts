@@ -9,6 +9,7 @@ export const commonConfig: UserConfig = {
     globals: true,
     include: ['src/**/*.{spec,test,e2e}.ts'],
     fileParallelism: false,
+    setupFiles: ['./src/shared/infra/testing/expect-helpers.ts'],
     coverage: {
       reporter: ['html', 'lcov'],
       include: ['src/**/*.ts'],

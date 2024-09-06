@@ -6,10 +6,11 @@
   "type": "module",
   "scripts": {
     "test": "vitest",
-    "test:run": "yarn test run --config ./vitest.config.ts --fileParallelism false",
-    "test:cov": "yarn test run --config ./vitest.config.ts --coverage --fileParallelism false",
+    "test:run": "yarn test run --config ./vitest.config.ts",
+    "test:cov": "yarn test run --config ./vitest.config.ts --coverage",
     "test:unit": "yarn test --config ./vitest-unit.config.ts",
-    "test:e2e": "yarn test --config ./vitest-e2e.config.ts"
+    "test:e2e": "yarn test --config ./vitest-e2e.config.ts",
+    "lint": "eslint --fix --ext .ts src"
   },
   "keywords": [],
   "author": "",

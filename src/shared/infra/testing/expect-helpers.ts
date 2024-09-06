@@ -1,14 +1,15 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { expect } from "vitest";
 import { ClassValidatorFields } from "../../domain/validators/class-validator-fields";
 import { EntityValidationError } from "../../domain/validators/validation.error";
 import { FieldsErrors } from "../../domain/validators/validator-fields-interface";
 
 type Expected =
   | {
-      validator: ClassValidatorFields<any>;
-      data: any;
-    }
+    validator: ClassValidatorFields<any>;
+    data: any;
+  }
   | (() => any);
-
 expect.extend({
   containsErrorMessages(expected: Expected, received: FieldsErrors) {
     if (typeof expected === "function") {
@@ -27,10 +28,10 @@ expect.extend({
         return isValid();
       }
 
-      return assertContainsErrorsMessages(validator.errors, received);
+      return assertContainsErrorsMessages(validator.errors!, received);
     }
-  },
-});
+  }
+})
 
 function assertContainsErrorsMessages(
   expected: FieldsErrors,
@@ -41,12 +42,12 @@ function assertContainsErrorsMessages(
   return isMatch
     ? isValid()
     : {
-        pass: false,
-        message: () =>
-          `The validation errors not contains ${JSON.stringify(
-            received
-          )}. Current: ${JSON.stringify(expected)}`,
-      };
+      pass: false,
+      message: () =>
+        `The validation errors not contains ${JSON.stringify(
+          received
+        )}. Current: ${JSON.stringify(expected)}`,
+    };
 }
 
 function isValid() {

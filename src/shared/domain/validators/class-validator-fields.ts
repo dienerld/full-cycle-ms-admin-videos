@@ -7,6 +7,7 @@ export abstract class ClassValidatorFields<PropsValidated>
   errors: FieldsErrors | null = null;
   validatedData: PropsValidated | null = null;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   validate(data: any): boolean {
     const errors = validateSync(data);
     if (errors.length) {
