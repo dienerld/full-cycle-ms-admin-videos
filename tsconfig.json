@@ -48,7 +48,8 @@
     ]
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "config/test"
   ],
   "exclude": [
     "node_modules/**",
