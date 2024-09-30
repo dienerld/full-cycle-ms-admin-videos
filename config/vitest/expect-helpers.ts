@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { expect } from "vitest";
-import { ClassValidatorFields } from "../../domain/validators/class-validator-fields";
-import { EntityValidationError } from "../../domain/validators/validation.error";
-import { FieldsErrors } from "../../domain/validators/validator-fields-interface";
+import { ClassValidatorFields } from "../../src/shared/domain/validators/class-validator-fields";
+import { EntityValidationError } from "../../src/shared/domain/validators/validation.error";
+import { FieldsErrors } from "../../src/shared/domain/validators/validator-fields-interface";
 
 type Expected =
   | {

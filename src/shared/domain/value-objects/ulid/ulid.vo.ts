@@ -30,6 +30,10 @@ export class Ulid extends ValueObject {
     // Retorna true se o ULID corresponder ao formato da expressão regular
     return ulidRegex.test(ulid);
   }
+
+  toString() {
+    return this.id;
+  }
 }
 
 
