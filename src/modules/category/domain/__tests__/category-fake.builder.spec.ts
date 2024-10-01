@@ -7,13 +7,13 @@ describe('CategoryFakerBuilder Unit Tests', () => {
     const faker = CategoryFakeBuilder.aCategory();
 
     it('should throw error when any with methods has called', () => {
-      expect(() => faker.getValue('id')).toThrow(
+      expect(() => faker['getValue']('id')).toThrow(
         new Error("Property id not have a factory, use 'with' methods"),
       );
     });
 
     it('should be undefined', () => {
-      expect(faker._id).toBeUndefined();
+      expect(faker['_id']).toBeUndefined();
     });
 
     test('withEntityId', () => {
@@ -47,13 +47,13 @@ describe('CategoryFakerBuilder Unit Tests', () => {
   describe('name prop', () => {
     const faker = CategoryFakeBuilder.aCategory();
     it('should be a function', () => {
-      expect(typeof faker._name === 'function').toBeTruthy();
+      expect(typeof faker['_name'] === 'function').toBeTruthy();
     });
 
     it('should call the word method', () => {
       const chance = Chance();
       const spyWordMethod = vi.spyOn(chance, 'word');
-      faker.chance = chance;
+      faker['chance'] = chance;
       faker.build();
 
       expect(spyWordMethod).toHaveBeenCalled();
@@ -110,13 +110,13 @@ describe('CategoryFakerBuilder Unit Tests', () => {
   describe('description prop', () => {
     const faker = CategoryFakeBuilder.aCategory();
     it('should be a function', () => {
-      expect(typeof faker._description === 'function').toBeTruthy();
+      expect(typeof faker['_description'] === 'function').toBeTruthy();
     });
 
     it('should call the paragraph method', () => {
       const chance = Chance();
       const spyWordMethod = vi.spyOn(chance, 'paragraph');
-      faker.chance = chance;
+      faker['chance'] = chance;
       faker.build();
 
       expect(spyWordMethod).toHaveBeenCalled();
@@ -125,7 +125,7 @@ describe('CategoryFakerBuilder Unit Tests', () => {
     test('withDescription', () => {
       const $this = faker.withDescription('test description');
       expect($this).toBeInstanceOf(CategoryFakeBuilder);
-      expect(faker._description).toBe('test description');
+      expect(faker['_description']).toBe('test description');
 
       faker.withDescription(() => 'test description');
       // @ts-expect-error description is callable
@@ -151,20 +151,20 @@ describe('CategoryFakerBuilder Unit Tests', () => {
   describe('isActive prop', () => {
     const faker = CategoryFakeBuilder.aCategory();
     it('should be a function', () => {
-      expect(typeof faker._isActive === 'function').toBeTruthy();
+      expect(typeof faker['_isActive'] === 'function').toBeTruthy();
     });
 
     test('activate', () => {
       const $this = faker.activate();
       expect($this).toBeInstanceOf(CategoryFakeBuilder);
-      expect(faker._isActive).toBeTruthy();
+      expect(faker['_isActive']).toBeTruthy();
       expect(faker.isActive).toBeTruthy();
     });
 
     test('deactivate', () => {
       const $this = faker.deactivate();
       expect($this).toBeInstanceOf(CategoryFakeBuilder);
-      expect(faker._isActive).toBeFalsy();
+      expect(faker['_isActive']).toBeFalsy();
       expect(faker.isActive).toBeFalsy();
     });
   });
@@ -180,14 +180,14 @@ describe('CategoryFakerBuilder Unit Tests', () => {
     });
 
     it('should be undefined', () => {
-      expect(faker._createdAt).toBeUndefined();
+      expect(faker['_createdAt']).toBeUndefined();
     });
 
     test('withCreatedAt', () => {
       const date = new Date();
       const $this = faker.withCreatedAt(date);
       expect($this).toBeInstanceOf(CategoryFakeBuilder);
-      expect(faker._createdAt).toBe(date);
+      expect(faker.createdAt).toBe(date);
 
       faker.withCreatedAt(() => date);
       // @ts-expect-error - use protected method
