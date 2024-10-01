@@ -35,17 +35,17 @@ export class CategoryFakeBuilder<TBuild = unknown> {
     this.chance = Chance();
   }
 
-  withEntityId(valueOrFactory: PropOrFactory<Ulid>) {
+  withEntityId(valueOrFactory: Ulid) {
     this._id = valueOrFactory;
     return this;
   }
 
-  withName(valueOrFactory: PropOrFactory<string>) {
+  withName(valueOrFactory: string) {
     this._name = valueOrFactory;
     return this;
   }
 
-  withInvalidNameEmpty(value: PropOrFactory<string> | null | undefined) {
+  withInvalidNameEmpty(value: string | null | undefined) {
     this._name = value;
     return this;
   }

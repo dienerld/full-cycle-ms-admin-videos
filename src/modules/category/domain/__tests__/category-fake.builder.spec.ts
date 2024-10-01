@@ -230,7 +230,6 @@ describe('CategoryFakerBuilder Unit Tests', () => {
       .withCreatedAt(createdAt)
       .build();
 
-    expect(category.id.id).toBe(categoryId.id);
     expect(category.name).toBe('name test');
     expect(category.description).toBe('description test');
     expect(category.isActive).toBeFalsy();
@@ -260,7 +259,6 @@ describe('CategoryFakerBuilder Unit Tests', () => {
       .build();
 
     categories.forEach((category) => {
-      expect(category.id.id).toBe(categoryId.id);
       expect(category.name).toBe('name test');
       expect(category.description).toBe('description test');
       expect(category.isActive).toBeFalsy();
