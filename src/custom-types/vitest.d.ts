@@ -1,9 +1,9 @@
-/* eslint-disable @typescript-eslint/no-empty-object-type */
-import 'vitest'
-import type { FieldsErrors } from '@shared/domain/validators/validator-fields-interface'
+ 
+import 'vitest';
+import type { FieldsErrors } from '@shared/domain/validators/validator-fields-interface';
 
 interface CustomMatchers<R = unknown> {
-  containsErrorMessages: (expected: FieldsErrors) => R
+  containsErrorMessages: (expected: FieldsErrors) => R;
 }
 
 declare module 'vitest' {

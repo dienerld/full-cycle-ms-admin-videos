@@ -6,9 +6,7 @@ import type { FieldsErrors } from '../../src/shared/domain/validators/validator-
 
 type Expected =
   | {
-      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
       validator: ClassValidatorFields<any>
-      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
       data: any
     }
   | (() => void)

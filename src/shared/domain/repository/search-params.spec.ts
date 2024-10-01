@@ -1,4 +1,4 @@
-import { SearchParams, type SortDirection } from './search-params'
+import { SearchParams, type SortDirection } from './search-params';
 
 describe('SearchParams Unit Tests', () => {
   it.each([
@@ -13,8 +13,8 @@ describe('SearchParams Unit Tests', () => {
     { page: false, expected: 1 },
     { page: {}, expected: 1 },
   ])('page prop => %j', ({ page, expected }) => {
-    expect(new SearchParams({ page: page as number }).page).toBe(expected)
-  })
+    expect(new SearchParams({ page: page as number }).page).toBe(expected);
+  });
 
   it.each([
     { pageSize: null, expected: 15 },
@@ -32,8 +32,10 @@ describe('SearchParams Unit Tests', () => {
     { pageSize: 2, expected: 2 },
     { pageSize: 10, expected: 10 },
   ])('pageSize prop => %j', ({ pageSize, expected }) => {
-    expect(new SearchParams({ pageSize: pageSize as number }).pageSize).toBe(expected)
-  })
+    expect(new SearchParams({ pageSize: pageSize as number }).pageSize).toBe(
+      expected,
+    );
+  });
 
   it.each([
     { sortBy: null, expected: null },
@@ -47,22 +49,24 @@ describe('SearchParams Unit Tests', () => {
     { sortBy: {}, expected: '[object Object]' },
     { sortBy: 'field', expected: 'field' },
   ])('sortBy prop => %j', ({ sortBy, expected }) => {
-    expect(new SearchParams({ sortBy: sortBy as SortDirection }).sortBy).toBe(expected)
-  })
+    expect(new SearchParams({ sortBy: sortBy as SortDirection }).sortBy).toBe(
+      expected,
+    );
+  });
 
   it('sortDir prop', () => {
-    let params = new SearchParams()
-    expect(params.sortDir).toBeNull()
+    let params = new SearchParams();
+    expect(params.sortDir).toBeNull();
 
-    params = new SearchParams({ sortBy: null })
-    expect(params.sortDir).toBeNull()
+    params = new SearchParams({ sortBy: null });
+    expect(params.sortDir).toBeNull();
 
-    params = new SearchParams({ sortBy: undefined })
-    expect(params.sortDir).toBeNull()
+    params = new SearchParams({ sortBy: undefined });
+    expect(params.sortDir).toBeNull();
 
-    params = new SearchParams({ sortBy: '' })
-    expect(params.sortDir).toBeNull()
-  })
+    params = new SearchParams({ sortBy: '' });
+    expect(params.sortDir).toBeNull();
+  });
 
   it.each([
     { sortDir: null, expected: 'asc' },
@@ -76,10 +80,11 @@ describe('SearchParams Unit Tests', () => {
     { sortDir: 'desc', expected: 'desc' },
     { sortDir: 'DESC', expected: 'desc' },
   ])('sortDir prop => %j', ({ sortDir, expected }) => {
-    expect(new SearchParams({ sortBy: 'field', sortDir: sortDir as SortDirection }).sortDir).toBe(
-      expected
-    )
-  })
+    expect(
+      new SearchParams({ sortBy: 'field', sortDir: sortDir as SortDirection })
+        .sortDir,
+    ).toBe(expected);
+  });
 
   it.each([
     { filter: null, expected: null },
@@ -94,6 +99,8 @@ describe('SearchParams Unit Tests', () => {
     { filter: {}, expected: '[object Object]' },
     { filter: 'field', expected: 'field' },
   ])('filter prop => %j', ({ filter, expected }) => {
-    expect(new SearchParams({ filter: filter as string }).filter).toBe(expected)
-  })
-})
+    expect(new SearchParams({ filter: filter as string }).filter).toBe(
+      expected,
+    );
+  });
+});
