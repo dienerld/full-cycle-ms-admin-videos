@@ -1,19 +1,19 @@
-import { Entity } from "@/shared/domain/entity";
-import { InMemoryRepository } from "./in-memory.repository";
-import { ValueObject } from "@/shared/domain/value-objects/value-object";
-import { Ulid } from "@/shared/domain/value-objects/ulid/ulid.vo";
-import { NotFoundError } from "@/shared/domain/errors/not-found.error";
+import { Entity } from '@/shared/domain/entity'
+import { NotFoundError } from '@/shared/domain/errors/not-found.error'
+import { Ulid } from '@/shared/domain/value-objects/ulid/ulid.vo'
+import { ValueObject } from '@/shared/domain/value-objects/value-object'
+import { InMemoryRepository } from './in-memory.repository'
 
 type StubEntityConstructor = {
-  id?: Ulid,
-  name: string,
+  id?: Ulid
+  name: string
   price: number
 }
 
 class StubEntity extends Entity {
-  id: Ulid;
-  name: string;
-  price: number;
+  id: Ulid
+  name: string
+  price: number
 
   constructor(data: StubEntityConstructor) {
     super()
@@ -26,14 +26,13 @@ class StubEntity extends Entity {
     return {
       id: this.id.id,
       name: this.name,
-      price: this.price
+      price: this.price,
     }
-
   }
 }
 
-
 class StubInMemoryRepository extends InMemoryRepository<StubEntity, Ulid> {
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   getEntity(): new (...args: any[]) => StubEntity {
     return StubEntity
   }
@@ -49,7 +48,7 @@ describe('InMemoryRepository', () => {
     const entity = new StubEntity({
       id: new Ulid(),
       name: 'test',
-      price: 10
+      price: 10,
     })
 
     await repository.insert(entity)
@@ -62,12 +61,12 @@ describe('InMemoryRepository', () => {
     const entity1 = new StubEntity({
       id: new Ulid(),
       name: 'test',
-      price: 10
+      price: 10,
     })
     const entity2 = new StubEntity({
       id: new Ulid(),
       name: 'test2',
-      price: 20
+      price: 20,
     })
 
     await repository.insertBulk([entity1, entity2])
@@ -77,17 +76,16 @@ describe('InMemoryRepository', () => {
     expect(repository.items[1]).toEqual(entity2)
   })
 
-
   it('Should return all entities', async () => {
     const entity1 = new StubEntity({
       id: new Ulid(),
       name: 'test',
-      price: 10
+      price: 10,
     })
     const entity2 = new StubEntity({
       id: new Ulid(),
       name: 'test2',
-      price: 20
+      price: 20,
     })
     await repository.insertBulk([entity1, entity2])
 
@@ -102,29 +100,26 @@ describe('InMemoryRepository', () => {
     const aggregate = new StubEntity({
       id: new Ulid(),
       name: 'test',
-      price: 10
+      price: 10,
     })
 
-    await expect(
-      repository.update(aggregate)
-    ).rejects.toThrow(
+    await expect(repository.update(aggregate)).rejects.toThrow(
       new NotFoundError(aggregate.id, StubEntity)
     )
-
   })
 
   it('Should update an entity', async () => {
     const aggregate = new StubEntity({
       id: new Ulid(),
       name: 'test',
-      price: 10
+      price: 10,
     })
     await repository.insert(aggregate)
 
     const newAggregate = new StubEntity({
       id: aggregate.id,
       name: 'test2',
-      price: 20
+      price: 20,
     })
 
     await repository.update(newAggregate)
@@ -137,7 +132,7 @@ describe('InMemoryRepository', () => {
     const aggregate = new StubEntity({
       id: new Ulid(),
       name: 'test',
-      price: 10
+      price: 10,
     })
     await repository.insert(aggregate)
 
@@ -150,12 +145,10 @@ describe('InMemoryRepository', () => {
     const aggregate = new StubEntity({
       id: new Ulid(),
       name: 'test',
-      price: 10
+      price: 10,
     })
 
-    await expect(
-      repository.delete(aggregate.id)
-    ).rejects.toThrow(
+    await expect(repository.delete(aggregate.id)).rejects.toThrow(
       new NotFoundError(aggregate.id, StubEntity)
     )
   })
@@ -164,7 +157,7 @@ describe('InMemoryRepository', () => {
     const aggregate = new StubEntity({
       id: new Ulid(),
       name: 'test',
-      price: 10
+      price: 10,
     })
     await repository.insert(aggregate)
 
@@ -177,7 +170,7 @@ describe('InMemoryRepository', () => {
     const aggregate = new StubEntity({
       id: new Ulid(),
       name: 'test',
-      price: 10
+      price: 10,
     })
     await repository.insert(aggregate)
 
@@ -185,5 +178,4 @@ describe('InMemoryRepository', () => {
 
     expect(foundAggregate).toBeNull()
   })
-
 })

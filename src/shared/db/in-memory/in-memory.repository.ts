@@ -1,10 +1,16 @@
-import { Entity } from '@/shared/domain/entity';
-import { NotFoundError } from '@/shared/domain/errors/not-found.error';
-import { ValueObject } from '@/shared/domain/value-objects/value-object';
-import { IRepository } from '@shared/domain/repository/repository-interface'
+import type { Entity } from '@/shared/domain/entity'
+import { NotFoundError } from '@/shared/domain/errors/not-found.error'
+import type { SearchParams } from '@/shared/domain/repository/search-params'
+import type { SearchResult } from '@/shared/domain/repository/search-result'
+import type { ValueObject } from '@/shared/domain/value-objects/value-object'
+import type {
+  IRepository,
+  ISearchableRepository,
+} from '@shared/domain/repository/repository-interface'
 
-export abstract class InMemoryRepository<E extends Entity, EntityId extends ValueObject> implements IRepository<E, EntityId> {
-
+export abstract class InMemoryRepository<E extends Entity, EntityId extends ValueObject>
+  implements IRepository<E, EntityId>
+{
   items: E[] = []
 
   async insert(entity: E): Promise<void> {
@@ -33,8 +39,16 @@ export abstract class InMemoryRepository<E extends Entity, EntityId extends Valu
   async findById(id: EntityId): Promise<E | null> {
     const item = this.items.find(item => item.id.equals(id))
     return typeof item === 'undefined' ? null : item
-
   }
   abstract getEntity(): new (...args: unknown[]) => E
+}
 
+export abstract class InMemorySearchableRepository<E extends Entity, EntityId extends ValueObject>
+  extends InMemoryRepository<E, EntityId>
+  implements ISearchableRepository<E, EntityId>
+{
+  sortableFields: string[]
+  search(query: SearchParams<string>): Promise<SearchResult<Entity>> {
+    throw new Error('Method not implemented.')
+  }
 }

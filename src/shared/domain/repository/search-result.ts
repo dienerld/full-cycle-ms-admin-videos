@@ -1,14 +1,14 @@
-import { Entity } from "../entity"
-import { ValueObject } from "../value-objects/value-object"
+import type { Entity } from '../entity'
+import { ValueObject } from '../value-objects/value-object'
 
 type SearchResultConstructorProps<A extends Entity> = {
-  items: A[],
+  items: A[]
   total: number
   currentPage: number
   pageSize: number
 }
 
-export class SearchResult<A extends Entity = Entity> extends ValueObject{
+export class SearchResult<A extends Entity = Entity> extends ValueObject {
   readonly items: A[]
   readonly total: number
   readonly currentPage: number
@@ -30,7 +30,7 @@ export class SearchResult<A extends Entity = Entity> extends ValueObject{
       total: this.total,
       currentPage: this.currentPage,
       pageSize: this.pageSize,
-      lastPage: this.lastPage
+      lastPage: this.lastPage,
     }
   }
 }

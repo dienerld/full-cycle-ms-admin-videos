@@ -10,16 +10,17 @@
     "test:cov": "yarn test run --config ./vitest.config.ts --coverage",
     "test:unit": "yarn test --config ./vitest-unit.config.ts",
     "test:e2e": "yarn test --config ./vitest-e2e.config.ts",
-    "lint": "eslint --fix --ext .ts src"
+    "lint": "biome check",
+    "lint:fix": "biome check --fix"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@biomejs/biome": "^1.9.2",
     "@eslint/js": "^9.9.1",
     "@types/lodash": "^4.17.7",
     "@types/node": "^22.5.2",
-    "eslint": "^9.9.1",
     "globals": "^15.9.0",
     "tsconfig-paths": "^4.2.0",
     "tsx": "^4.19.0",

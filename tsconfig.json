@@ -12,9 +12,7 @@
     "strictPropertyInitialization": false,
     "forceConsistentCasingInFileNames": true,
     "incremental": true,
-    "lib": [
-      "es2020"
-    ],
+    "lib": ["es2020"],
     "module": "CommonJS",
     "moduleResolution": "node",
     "noFallthroughCasesInSwitch": true,
@@ -29,31 +27,16 @@
     "target": "ES2021",
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "src/*"
-      ],
-      "@modules/*": [
-        "src/modules/*"
-      ],
-      "@shared/*": [
-        "src/shared/*"
-      ]
+      "@/*": ["src/*"],
+      "@modules/*": ["src/modules/*"],
+      "@shared/*": ["src/shared/*"]
     },
     "strict": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
     "skipLibCheck": true,
-    "types": [
-      "vitest/globals"
-    ]
+    "types": ["vitest/globals"]
   },
-  "include": [
-    "src/**/*",
-    "config/test"
-  ],
-  "exclude": [
-    "node_modules/**",
-    "dist",
-    "coverage"
-  ]
+  "include": ["src/**/*", "config/test"],
+  "exclude": ["node_modules/**", "dist", "coverage"]
 }

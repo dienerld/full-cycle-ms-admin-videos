@@ -1,10 +1,8 @@
-import { defineConfig, UserConfig } from 'vitest/config';
-import tsconfigPaths from 'vite-tsconfig-paths';
+import tsconfigPaths from 'vite-tsconfig-paths'
+import { type UserConfig, defineConfig } from 'vitest/config'
 
 export const commonConfig: UserConfig = {
-  plugins: [
-    tsconfigPaths(),
-  ],
+  plugins: [tsconfigPaths()],
   test: {
     globals: true,
     include: ['src/**/*.{spec,test,e2e}.ts'],
@@ -31,6 +29,6 @@ export const commonConfig: UserConfig = {
       ],
     },
   },
-};
+}
 
-export default defineConfig(commonConfig);
+export default defineConfig(commonConfig)

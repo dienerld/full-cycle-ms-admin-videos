@@ -1,5 +1,5 @@
-import { defineConfig } from 'vitest/config';
-import { commonConfig } from './vitest.config';
+import { defineConfig } from 'vitest/config'
+import { commonConfig } from './vitest.config'
 
 export default defineConfig({
   ...commonConfig,
@@ -8,4 +8,4 @@ export default defineConfig({
     fileParallelism: false,
     include: ['src/**/*.e2e.ts'],
   },
-});
+})

@@ -1,24 +1,24 @@
-import { validateSync } from "class-validator";
-import { FieldsErrors, IValidatorFields } from "./validator-fields-interface";
+import { validateSync } from 'class-validator'
+import type { FieldsErrors, IValidatorFields } from './validator-fields-interface'
 
 export abstract class ClassValidatorFields<PropsValidated>
   implements IValidatorFields<PropsValidated>
 {
-  errors: FieldsErrors | null = null;
-  validatedData: PropsValidated | null = null;
+  errors: FieldsErrors | null = null
+  validatedData: PropsValidated | null = null
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   validate(data: any): boolean {
-    const errors = validateSync(data);
+    const errors = validateSync(data)
     if (errors.length) {
-      this.errors = {};
+      this.errors = {}
       for (const error of errors) {
-        const field = error.property;
-        this.errors[field] = Object.values(error.constraints!);
+        const field = error.property
+        this.errors[field] = Object.values(error.constraints!)
       }
     } else {
-      this.validatedData = data;
+      this.validatedData = data
     }
-    return !errors.length;
+    return !errors.length
   }
 }
