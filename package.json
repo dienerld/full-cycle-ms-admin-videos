@@ -9,6 +9,7 @@
     "test:run": "yarn test run --config ./vitest.config.ts",
     "test:cov": "yarn test run --config ./vitest.config.ts --coverage",
     "test:unit": "yarn test --config ./vitest-unit.config.ts",
+    "test:integration": "yarn test --config ./vitest-integration.config.ts",
     "test:e2e": "yarn test --config ./vitest-e2e.config.ts",
     "lint": "eslint src --fix"
   },
@@ -20,10 +21,12 @@
     "@types/chance": "^1.1.6",
     "@types/lodash": "^4.17.9",
     "@types/node": "^22.7.4",
+    "@types/sequelize": "^4.28.20",
     "chance": "^1.1.12",
     "eslint": "^9.11.1",
     "eslint-config-dienerld": "^1.0.9",
     "globals": "^15.10.0",
+    "sqlite3": "^5.1.7",
     "tsconfig-paths": "^4.2.0",
     "tsx": "^4.19.1",
     "typescript": "^5.6.2",
@@ -35,6 +38,8 @@
     "class-transform": "^0.7.0",
     "class-validator": "^0.14.1",
     "lodash": "^4.17.21",
+    "sequelize": "^6.37.3",
+    "sequelize-typescript": "^2.1.6",
     "ulid": "^2.3.0"
   }
 }

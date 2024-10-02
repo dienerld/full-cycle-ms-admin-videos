@@ -1,12 +1,15 @@
 import { Category } from '@/modules/category/domain/category.entity';
+import { ICategoryRepository } from '@/modules/category/domain/category.repository';
 import { InMemorySearchableRepository } from '@/shared/db/in-memory/in-memory.repository';
 import type { SortDirection } from '@/shared/domain/repository/search-params';
 import type { Ulid } from '@/shared/domain/value-objects/ulid/ulid.vo';
 
-export class CategoryInMemoryRepository extends InMemorySearchableRepository<
-  Category,
-  Ulid
-> {
+export class CategoryInMemoryRepository
+  extends InMemorySearchableRepository<
+    Category,
+    Ulid
+  >
+  implements ICategoryRepository {
   sortableFields = ['name', 'createdAt'];
 
   protected async applyFilter(
